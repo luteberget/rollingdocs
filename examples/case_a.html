@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Case A - rolling</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+        <link rel="stylesheet" href="railview.css">
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <noscript>
+            <style type="text/css">
+                .javascript-only {
+                    display: none;
+                }
+            </style>
+        </noscript>
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme;
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="rolling.html">Rolling</a></li><li><a href="model.html"><strong aria-hidden="true">1.</strong> Simulation model</a></li><li><ol class="section"><li><a href="dgraph.html"><strong aria-hidden="true">1.1.</strong> Infrastructure</a></li><li><a href="routes.html"><strong aria-hidden="true">1.2.</strong> Interlocking</a></li><li><a href="dispatch.html"><strong aria-hidden="true">1.3.</strong> Dispatch</a></li></ol></li><li><a href="simexamples.html"><strong aria-hidden="true">2.</strong> Simulation examples</a></li><li><ol class="section"><li><a href="examples/simplestop.html"><strong aria-hidden="true">2.1.</strong> Simple stop</a></li><li><a href="examples/single.html"><strong aria-hidden="true">2.2.</strong> Single track</a></li><li><a href="examples/twotrack.html"><strong aria-hidden="true">2.3.</strong> Two track station</a></li><li><a href="examples/multipletrains.html"><strong aria-hidden="true">2.4.</strong> Multiple trains</a></li><li><a href="examples/partialrelease.html"><strong aria-hidden="true">2.5.</strong> Partial release</a></li><li><a href="examples/twoway.html"><strong aria-hidden="true">2.6.</strong> Two-way traffic</a></li></ol></li><li><a href="planner.html"><strong aria-hidden="true">3.</strong> Planning model</a></li><li><a href="plannerexamples.html"><strong aria-hidden="true">4.</strong> Verification examples</a></li><li><ol class="section"><li><a href="examples/runningtime.html"><strong aria-hidden="true">4.1.</strong> Running time</a></li><li><a href="examples/frequency.html"><strong aria-hidden="true">4.2.</strong> Consecutive train frequency</a></li><li><a href="examples/overtaking.html"><strong aria-hidden="true">4.3.</strong> Overtaking</a></li><li><a href="examples/crossing.html"><strong aria-hidden="true">4.4.</strong> Crossing</a></li></ol></li><li><a href="casestudies.html"><strong aria-hidden="true">5.</strong> Case studies</a></li><li><ol class="section"><li><a href="examples/case_a.html" class="active"><strong aria-hidden="true">5.1.</strong> Case A</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons javascript-only">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">rolling</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="searchbar-outer" class="searchbar-outer">
+                    <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                </div>
+                <div id="searchresults-outer" class="searchresults-outer">
+                    <div class="searchresults-header" id="searchresults-header"></div>
+                    <ul id="searchresults">
+                    </ul>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="examples/case_a.html#case-a" id="case-a"><h1>Case A</h1></a>
+<p>Station from Norwegian engineering project, preliminary design.</p>
+<pre><code class="language-haskell">vehicle passengertrain length 150.0 accel 1.0 brake 0.9 maxspeed 20.0
+
+movement passengertrain {
+  visit [b1]
+  visit [b2iii]
+}
+</code></pre>
+<a class="header" href="examples/case_a.html#view" id="view"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/case_a-history.js"></script>
+<script src="examples/case_a-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="examples/case_a.html#plan" id="plan"><h2>Plan</h2></a>
+<pre><code class="language-haskell">route r01x65
+route r65x75
+route r75x
+train t1 l=150.0 a=1.0 b=0.9 v=20.0 re1
+</code></pre>
+<a class="header" href="examples/case_a.html#infrastructure" id="infrastructure"><h2>Infrastructure</h2></a>
+<pre><code class="language-haskell">-- TODO sight
+--
+-- Leftmost node is free-standing distant signal Fs11001
+--
+-- S: Entry section
+boundary b1
+node b1(exit a114a)-ne1b(sight hs11001 1225.0, enter a114a)
+linear ne1b-ne2a 1225.0
+node ne2a(enter a114a, exit a201)-ne2b(exit a114a, enter a201, signal hs1101)
+linear ne2b-ne3a 250.0
+node ne3a(enter a201, exit a203, signal hs11004)-ne3b(exit a201, enter a203)
+linear ne3b-ne4a 395.0 -- 645 - 250
+node ne4a-ne4b
+
+-- SPV 1
+-- 719 - 395
+switch spv1 left ne4b-(n31a 162.0, n11a 100.0)
+
+-- S: Track 3 (top)
+node n31a(enter a205,exit a202)-n31b(exit a205,enter a202)
+--linear n31b-n32a 50.0
+switch spv22 right n32a-(n31b 50.0, nvx22end 50.0)
+node nvx22end-nvx22endstop
+node n32a-n32b
+linear n32b-n33a 50.0
+node n33a(enter a202, exit a204, signal hs11016)-n33b(exit a202, enter a204, sight hs11065 422.0)
+linear n33b-n34a 422.0
+node n34a(enter a204, exit a206)-n34b(exit a204, enter a206, signal hs11065, sight hs11075 371.0)
+-- Ignoring the crossing for now. Joining 206-208-210 into 206
+linear n34b-n35a 271.0
+node n35a(enter a206, exit a212)-n35b(exit a206, enter a212)
+switch spv4 left n36a-(n91b 111.0, n35b 111.0)
+node n91a(enter a250, exit a212)-n91b(enter a212, exit a250)
+node n36a-n36b
+linear n36b-n37a 100.0
+-- Skip 214
+node n37a(enter a212, exit a216)-n37b(enter a216, exit a212, signal hs11075)
+linear n37b-n38a 250.0
+node n38a(enter a216, exit a218, signal hs11006)-n38b(exit a216, enter a218)
+linear n38b-n39a 250.0
+node n39a(enter a218)-n39b(exit a218)
+linear n39b-n310a 750.0
+node n310a-b2iii
+boundary b2iii
+-- Exit on upper track to BRG
+
+-- S: Track 1 (mid)
+node n11a-n11b
+switch spv3 right n11b-(n12a 52.0, n41a 53.0)
+node n12a(enter a205, exit a207,signal hs11036)-n13b(enter a207, exit a205)
+linear n13b-n14a 396.0
+node n14a(enter a207, exit a209)-n14b(enter a209, exit a207, signal hs11005)
+switch spv10 left n15a-(n46b 50.0,n14b 50.0)
+node n15a-n15b
+linear n15b-n16a 50.0
+node n16a(enter a209, exit a211)-n16b(enter a211, exit a209)
+linear n16b-n17a 50.0
+node n17a-n17b
+switch spv11 left n17b-(n61a 50.0, n18a 50.0)
+node n18a(enter a211, exit a213)-n18b(enter a213, exit a211)
+linear n18b-n19a 50.0
+node n19a(enter a213, exit a215, signal hs11066)-n19b(enter a215, exit a213)
+linear n19b-n110a 844.0
+node n110a(exit a217, enter a215)-n110b(enter a217, exit a215, signal hs11015)
+--linear n110b-n111a 371.0
+switch spv2 right n111a-(n110b 371.0, n2xb 106.0)
+node n111a-n111b
+linear n111b-n112a 40.0
+-- JOIN a219 into a217)
+node n112a(enter a217, exit a221, signal hs11056)-n112b(enter a221, exit a217)
+linear n112b-n113a 250.0
+node n113a(enter a221)-n113b(exit a221)
+linear n113b-n114a 750.0
+node n114a-b2i
+boundary b2i
+
+
+-- TRACK 2
+node n20a-n20b
+linear n20b-n21a 253.0
+node n21a(enter a240)-n21b(exit a240, enter a244)
+linear n21b-n22a 100.0
+node n22a(enter a244, exit a248)-n22b(enter a244, exit a248)
+node n23a-n23b
+switch spv6 left n23a-(n62b 150.0, n22b 50.0)
+linear n23b-n24a 50.0
+node n24a(enter a248, exit a250)-n24b(exit a248, enter a250)
+linear n24b-n25a 50.0
+node n25a-n25b
+switch spv15 left n25b-(n91a 50.0, n26a 500.0)
+node n26a(enter a250, exit a217)-n26b(exit a250, enter a217, signal hs11035)
+linear n26b-n2xa 100.0
+node n2xa-n2xb
+
+-- S: Track &quot;6&quot; (unnamed) mid
+-- join a239 into a241
+node n61a(enter a211, exit a241)-n61b(exit a211, enter a241)
+linear n61b-n62a 100.0 
+node n62a(enter a241, exit a248, signal hs11026)-n62b(enter a248, exit a241)
+
+
+-- S: Track 4
+node n41a(enter a205, exit a231)-n41b(exit a205, enter a231)
+linear n41b-n42a 53.0
+node n42a-n42b
+switch spv5 left n42b-(n43a 53.0, n50a 200.0)
+node n50a-n50b -- dead end
+node n43a(enter a231, exit a233, signal hs11046)-n43b(exit a231, enter a233)
+linear n43b-n44a 281.0
+node n44a(enter a233, exit a235)-n44b(exit a233, enter a235, signal hs11045)
+-- Join to track 1
+switch spv12 right n45a-(n59b 200.0, n44b 50.0)
+node n59a-n59b -- dead end
+node n45a-n45b
+linear n45b-n46a 50.0
+node n46a(enter a235, exit a209)-n46b(enter a209, exit a235)
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="casestudies.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="casestudies.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if (getComputedStyle(document.querySelector(".fa")).fontFamily !== "FontAwesome") {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = '_FontAwesome/css/font-awesome.css';
+                document.head.insertBefore(link, document.head.firstChild)
+            }
+        </script>
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>

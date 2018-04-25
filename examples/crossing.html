@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="rolling.html">Rolling</a></li><li><a href="model.html"><strong aria-hidden="true">1.</strong> Simulation model</a></li><li><ol class="section"><li><a href="dgraph.html"><strong aria-hidden="true">1.1.</strong> Infrastructure</a></li><li><a href="routes.html"><strong aria-hidden="true">1.2.</strong> Interlocking</a></li><li><a href="dispatch.html"><strong aria-hidden="true">1.3.</strong> Dispatch</a></li></ol></li><li><a href="simexamples.html"><strong aria-hidden="true">2.</strong> Simulation examples</a></li><li><ol class="section"><li><a href="examples/simplestop.html"><strong aria-hidden="true">2.1.</strong> Simple stop</a></li><li><a href="examples/single.html"><strong aria-hidden="true">2.2.</strong> Single track</a></li><li><a href="examples/twotrack.html"><strong aria-hidden="true">2.3.</strong> Two track station</a></li><li><a href="examples/multipletrains.html"><strong aria-hidden="true">2.4.</strong> Multiple trains</a></li><li><a href="examples/partialrelease.html"><strong aria-hidden="true">2.5.</strong> Partial release</a></li><li><a href="examples/twoway.html"><strong aria-hidden="true">2.6.</strong> Two-way traffic</a></li></ol></li><li><a href="planner.html"><strong aria-hidden="true">3.</strong> Planning model</a></li><li><a href="plannerexamples.html"><strong aria-hidden="true">4.</strong> Verification examples</a></li><li><ol class="section"><li><a href="examples/runningtime.html"><strong aria-hidden="true">4.1.</strong> Running time</a></li><li><a href="examples/frequency.html"><strong aria-hidden="true">4.2.</strong> Consecutive train frequency</a></li><li><a href="examples/overtaking.html"><strong aria-hidden="true">4.3.</strong> Overtaking</a></li><li><a href="examples/crossing.html" class="active"><strong aria-hidden="true">4.4.</strong> Crossing</a></li></ol></li><li><a href="casestudies.html"><strong aria-hidden="true">5.</strong> Case studies</a></li><li><ol class="section"><li><a href="examples/case_a.html"><strong aria-hidden="true">5.1.</strong> Case A</a></li></ol></li></ol>
+            <ol class="chapter"><li class="affix"><a href="rolling.html">Rolling</a></li><li><a href="model.html"><strong aria-hidden="true">1.</strong> Simulation model</a></li><li><ol class="section"><li><a href="dgraph.html"><strong aria-hidden="true">1.1.</strong> Infrastructure</a></li><li><a href="routes.html"><strong aria-hidden="true">1.2.</strong> Interlocking</a></li><li><a href="dispatch.html"><strong aria-hidden="true">1.3.</strong> Dispatch</a></li></ol></li><li><a href="simexamples.html"><strong aria-hidden="true">2.</strong> Simulation examples</a></li><li><ol class="section"><li><a href="examples/simplestop.html"><strong aria-hidden="true">2.1.</strong> Simple stop</a></li><li><a href="examples/single.html"><strong aria-hidden="true">2.2.</strong> Single track</a></li><li><a href="examples/twotrack.html"><strong aria-hidden="true">2.3.</strong> Two track station</a></li><li><a href="examples/multipletrains.html"><strong aria-hidden="true">2.4.</strong> Multiple trains</a></li><li><a href="examples/partialrelease.html"><strong aria-hidden="true">2.5.</strong> Partial release</a></li><li><a href="examples/twoway.html"><strong aria-hidden="true">2.6.</strong> Two-way traffic</a></li></ol></li><li><a href="planner.html"><strong aria-hidden="true">3.</strong> Planning model</a></li><li><a href="plannerexamples.html"><strong aria-hidden="true">4.</strong> Verification examples</a></li><li><ol class="section"><li><a href="examples/runningtime.html"><strong aria-hidden="true">4.1.</strong> Running time</a></li><li><a href="examples/frequency.html"><strong aria-hidden="true">4.2.</strong> Consecutive train frequency</a></li><li><a href="examples/overtaking.html"><strong aria-hidden="true">4.3.</strong> Overtaking</a></li><li><a href="examples/crossing.html" class="active"><strong aria-hidden="true">4.4.</strong> Crossing</a></li></ol></li><li><a href="tools.html"><strong aria-hidden="true">5.</strong> Input conversion from railML</a></li><li><ol class="section"><li><a href="examples/railml_trivial.html"><strong aria-hidden="true">5.1.</strong> railML trivial example</a></li><li><a href="examples/railml_twotrack.html"><strong aria-hidden="true">5.2.</strong> railML two track</a></li></ol></li><li><a href="casestudies.html"><strong aria-hidden="true">6.</strong> Case studies</a></li><li><ol class="section"><li><a href="examples/case_valebo.html"><strong aria-hidden="true">6.1.</strong> Valebø</a></li><li><a href="examples/case_kolbotn.html"><strong aria-hidden="true">6.2.</strong> Kolbotn</a></li><li><a href="examples/case_eidsvoll.html"><strong aria-hidden="true">6.3.</strong> Eidsvoll</a></li><li><a href="examples/case_holmlia.html"><strong aria-hidden="true">6.4.</strong> Holmlia</a></li><li><a href="examples/case_asker.html"><strong aria-hidden="true">6.5.</strong> Asker</a></li><li><a href="examples/case_arna.html"><strong aria-hidden="true">6.6.</strong> Arna A20</a></li><li><a href="examples/case_arna_byhand.html"><strong aria-hidden="true">6.7.</strong> Arna A20 by hand</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -169,12 +169,14 @@ timing start_p end_g
 timing start_g end_p
 </code></pre>
 <a class="header" href="examples/crossing.html#dispatch" id="dispatch"><h3>Dispatch</h3></a>
-<pre><code class="language-haskell">route ra2
-route rb1
+<pre><code class="language-haskell">route ra1
+route rb2
 train t1 l=850.0 a=0.5 b=0.4 v=20.0 rentrya
 train t2 l=150.0 a=1.0 b=0.9 v=40.0 rentryb
-route rexita2
-route rexitb1
+wait
+route rexita1
+wait
+route rexitb2
 </code></pre>
 <a class="header" href="examples/crossing.html#result" id="result"><h3>Result</h3></a>
 <div id="railview"></div>
@@ -194,7 +196,7 @@ route rexitb1
                         
 
                         
-                            <a rel="next" href="casestudies.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="tools.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -212,7 +214,7 @@ route rexitb1
                 
 
                 
-                    <a href="casestudies.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="tools.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="rolling.html">Rolling</a></li><li><a href="model.html"><strong aria-hidden="true">1.</strong> Simulation model</a></li><li><ol class="section"><li><a href="dgraph.html"><strong aria-hidden="true">1.1.</strong> Infrastructure</a></li><li><a href="routes.html"><strong aria-hidden="true">1.2.</strong> Interlocking</a></li><li><a href="dispatch.html"><strong aria-hidden="true">1.3.</strong> Dispatch</a></li></ol></li><li><a href="simexamples.html"><strong aria-hidden="true">2.</strong> Simulation examples</a></li><li><ol class="section"><li><a href="examples/simplestop.html"><strong aria-hidden="true">2.1.</strong> Simple stop</a></li><li><a href="examples/single.html"><strong aria-hidden="true">2.2.</strong> Single track</a></li><li><a href="examples/twotrack.html"><strong aria-hidden="true">2.3.</strong> Two track station</a></li><li><a href="examples/multipletrains.html"><strong aria-hidden="true">2.4.</strong> Multiple trains</a></li><li><a href="examples/partialrelease.html"><strong aria-hidden="true">2.5.</strong> Partial release</a></li><li><a href="examples/twoway.html"><strong aria-hidden="true">2.6.</strong> Two-way traffic</a></li></ol></li><li><a href="planner.html"><strong aria-hidden="true">3.</strong> Planning model</a></li><li><a href="plannerexamples.html"><strong aria-hidden="true">4.</strong> Verification examples</a></li><li><ol class="section"><li><a href="examples/runningtime.html"><strong aria-hidden="true">4.1.</strong> Running time</a></li><li><a href="examples/frequency.html"><strong aria-hidden="true">4.2.</strong> Consecutive train frequency</a></li><li><a href="examples/overtaking.html"><strong aria-hidden="true">4.3.</strong> Overtaking</a></li><li><a href="examples/crossing.html"><strong aria-hidden="true">4.4.</strong> Crossing</a></li></ol></li><li><a href="casestudies.html"><strong aria-hidden="true">5.</strong> Case studies</a></li><li><ol class="section"><li><a href="examples/case_a.html"><strong aria-hidden="true">5.1.</strong> Case A</a></li></ol></li></ol>
+            <ol class="chapter"><li class="affix"><a href="rolling.html">Rolling</a></li><li><a href="model.html"><strong aria-hidden="true">1.</strong> Simulation model</a></li><li><ol class="section"><li><a href="dgraph.html"><strong aria-hidden="true">1.1.</strong> Infrastructure</a></li><li><a href="routes.html"><strong aria-hidden="true">1.2.</strong> Interlocking</a></li><li><a href="dispatch.html"><strong aria-hidden="true">1.3.</strong> Dispatch</a></li></ol></li><li><a href="simexamples.html"><strong aria-hidden="true">2.</strong> Simulation examples</a></li><li><ol class="section"><li><a href="examples/simplestop.html"><strong aria-hidden="true">2.1.</strong> Simple stop</a></li><li><a href="examples/single.html"><strong aria-hidden="true">2.2.</strong> Single track</a></li><li><a href="examples/twotrack.html"><strong aria-hidden="true">2.3.</strong> Two track station</a></li><li><a href="examples/multipletrains.html"><strong aria-hidden="true">2.4.</strong> Multiple trains</a></li><li><a href="examples/partialrelease.html"><strong aria-hidden="true">2.5.</strong> Partial release</a></li><li><a href="examples/twoway.html"><strong aria-hidden="true">2.6.</strong> Two-way traffic</a></li></ol></li><li><a href="planner.html"><strong aria-hidden="true">3.</strong> Planning model</a></li><li><a href="plannerexamples.html"><strong aria-hidden="true">4.</strong> Verification examples</a></li><li><ol class="section"><li><a href="examples/runningtime.html"><strong aria-hidden="true">4.1.</strong> Running time</a></li><li><a href="examples/frequency.html"><strong aria-hidden="true">4.2.</strong> Consecutive train frequency</a></li><li><a href="examples/overtaking.html"><strong aria-hidden="true">4.3.</strong> Overtaking</a></li><li><a href="examples/crossing.html"><strong aria-hidden="true">4.4.</strong> Crossing</a></li></ol></li><li><a href="tools.html"><strong aria-hidden="true">5.</strong> Input conversion from railML</a></li><li><ol class="section"><li><a href="examples/railml_trivial.html"><strong aria-hidden="true">5.1.</strong> railML trivial example</a></li><li><a href="examples/railml_twotrack.html"><strong aria-hidden="true">5.2.</strong> railML two track</a></li></ol></li><li><a href="casestudies.html"><strong aria-hidden="true">6.</strong> Case studies</a></li><li><ol class="section"><li><a href="examples/case_valebo.html"><strong aria-hidden="true">6.1.</strong> Valebø</a></li><li><a href="examples/case_kolbotn.html"><strong aria-hidden="true">6.2.</strong> Kolbotn</a></li><li><a href="examples/case_eidsvoll.html"><strong aria-hidden="true">6.3.</strong> Eidsvoll</a></li><li><a href="examples/case_holmlia.html"><strong aria-hidden="true">6.4.</strong> Holmlia</a></li><li><a href="examples/case_asker.html"><strong aria-hidden="true">6.5.</strong> Asker</a></li><li><a href="examples/case_arna.html"><strong aria-hidden="true">6.6.</strong> Arna A20</a></li><li><a href="examples/case_arna_byhand.html"><strong aria-hidden="true">6.7.</strong> Arna A20 by hand</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -150,20 +150,8 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="print.html#rolling" id="rolling"><h1>Rolling</h1></a>
-<p><img src="rolling.png" alt="Rolling" /></p>
-<a class="header" href="print.html#model" id="model"><h1>Model</h1></a>
-<p>The input model for <code>rolling</code> consists of three main components:</p>
-<ul>
-<li>The <strong>infrastructure</strong> model contains the tracks, movable elements, and
-signalling and interlocking components which are needed to do a
-running time analysis of railway dispatching.</li>
-<li>The <strong>interlocking</strong> model describes the elementary routes that can
-be dispatched.</li>
-<li>The <strong>dispatch</strong> list contains times of train and route setting.</li>
-</ul>
-<p>Each of these are described in more detail in their respective sections.</p>
+<a class="header" href="print.html#simulation-model" id="simulation-model"><h1>Simulation model</h1></a>
 <a class="header" href="print.html#infrastructure" id="infrastructure"><h1>Infrastructure</h1></a>
-<p>The <code>rolling</code> infrastructure model is a double node graph (ref. opentrack predecessor literature).</p>
 <a class="header" href="print.html#interlocking" id="interlocking"><h1>Interlocking</h1></a>
 <a class="header" href="print.html#dispatch" id="dispatch"><h1>Dispatch</h1></a>
 <a class="header" href="print.html#simulation-examples" id="simulation-examples"><h1>Simulation examples</h1></a>
@@ -440,14 +428,17 @@ the following dispatch plan:</p>
 <pre><code class="language-haskell">route ra2
 route rexita2
 train t4 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
+wait
 route ra1
 route rexita1
 train t3 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
-route ra2
-route rexita2
-train t2 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
+wait
 route ra1
 route rexita1
+train t2 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
+wait
+route ra2
+route rexita2
 train t1 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
 
 </code></pre>
@@ -482,12 +473,14 @@ timing end_p end_g
 </code></pre>
 <a class="header" href="print.html#result-1" id="result-1"><h3>Result</h3></a>
 <p>When the passenger train goes first, we get the following successful dispatch plan:</p>
-<pre><code class="language-haskell">route ra1
+<pre><code class="language-haskell">route ra2
 train t2 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
-route ra2
-route rexita2
-train t1 l=650.0 a=1.0 b=0.9 v=20.0 rentrya
+wait
+route ra1
 route rexita1
+train t1 l=650.0 a=1.0 b=0.9 v=20.0 rentrya
+wait
+route rexita2
 
 </code></pre>
 <div id="railview"></div>
@@ -515,12 +508,14 @@ timing start_p end_g
 timing start_g end_p
 </code></pre>
 <a class="header" href="print.html#dispatch-3" id="dispatch-3"><h3>Dispatch</h3></a>
-<pre><code class="language-haskell">route ra2
-route rb1
+<pre><code class="language-haskell">route ra1
+route rb2
 train t1 l=850.0 a=0.5 b=0.4 v=20.0 rentrya
 train t2 l=150.0 a=1.0 b=0.9 v=40.0 rentryb
-route rexita2
-route rexitb1
+wait
+route rexita1
+wait
+route rexitb2
 </code></pre>
 <a class="header" href="print.html#result-2" id="result-2"><h3>Result</h3></a>
 <div id="railview"></div>
@@ -528,7 +523,486 @@ route rexitb1
 <script src="examples/crossing-history.js"></script>
 <script src="examples/crossing-vis.js"></script>
 <script src="railview.js"></script>
+<a class="header" href="print.html#input-conversion-from-railml" id="input-conversion-from-railml"><h1>Input conversion from railML</h1></a>
+<a class="header" href="print.html#conversion-from-railml" id="conversion-from-railml"><h1>Conversion from railML</h1></a>
+<a class="header" href="print.html#trivial-handwritten-exampletest-file" id="trivial-handwritten-exampletest-file"><h2>Trivial handwritten example/test file</h2></a>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;railml xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.railml.org/schemas/2013&quot;&gt;
+  &lt;infrastructure&gt;
+    &lt;tracks&gt;
+        &lt;track name=&quot;SP1&quot;&gt;
+            &lt;trackTopology&gt;
+                &lt;trackBegin pos=&quot;0.0&quot;&gt;
+                    &lt;openEnd id=&quot;b1&quot; /&gt;
+                &lt;/trackBegin&gt;
+                &lt;trackEnd pos=&quot;1000.0&quot;&gt;
+                    &lt;openEnd id=&quot;b2&quot; /&gt;
+                &lt;/trackEnd&gt;
+                &lt;connections&gt;
+                &lt;/connections&gt;
+            &lt;/trackTopology&gt;
+            &lt;ocsElements&gt;
+                &lt;signals&gt;
+                    &lt;signal id=&quot;sig1&quot; name=&quot;Signal 1&quot; pos=&quot;50.0&quot; type=&quot;main&quot;  dir=&quot;up&quot;/&gt;
+                    &lt;signal id=&quot;sig2&quot; name=&quot;Signal 2&quot; pos=&quot;250.0&quot; type=&quot;main&quot; dir=&quot;up&quot;/&gt;
+                    &lt;signal id=&quot;sig3&quot; name=&quot;Signal 3&quot; pos=&quot;350.0&quot; type=&quot;main&quot; dir=&quot;up&quot;/&gt;
+                &lt;/signals&gt;
+                &lt;trainDetectionElements&gt;
+                    &lt;trainDetector id=&quot;d0&quot; name=&quot;detector 1&quot; pos=&quot;10.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d1&quot; name=&quot;detector 1&quot; pos=&quot;50.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d2&quot; name=&quot;detector 2&quot; pos=&quot;250.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d3&quot; name=&quot;detector 2&quot; pos=&quot;350.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d4&quot; name=&quot;detector 2&quot; pos=&quot;390.0&quot; /&gt;
+                &lt;/trainDetectionElements&gt;
+            &lt;/ocsElements&gt;
+        &lt;/track&gt;
+    &lt;/tracks&gt;
+  &lt;/infrastructure&gt;
+&lt;/railml&gt;
+</code></pre>
+<a class="header" href="print.html#generated-output" id="generated-output"><h2>Generated output</h2></a>
+<a class="header" href="print.html#infrastructure-1" id="infrastructure-1"><h3>Infrastructure</h3></a>
+<pre><code class="language-haskell">node b1-n0b
+node n1a-n1b(sight sig1 50)
+node n2a(exit sec0)-n2b(enter sec0)
+node n3a-n3b(signal sig1)
+node n4a(enter sec0, exit sec1)-n4b(exit sec0, enter sec1)
+node n5a-n5b(sight sig2 200)
+node n6a-n6b(sight sig3 200)
+node n7a-n7b(signal sig2)
+node n8a(enter sec1, exit sec2)-n8b(exit sec1, enter sec2)
+node n9a-n9b(signal sig3)
+node n10a(enter sec2, exit sec3)-n10b(exit sec2, enter sec3)
+node n11a(enter sec3)-n11b(exit sec3)
+node n12a-b2
+boundary b1
+linear n0b-n1a 0
+linear n1b-n2a 10
+linear n2b-n3a 40
+linear n3b-n4a 0
+linear n4b-n5a 0
+linear n5b-n6a 100
+linear n6b-n7a 100
+linear n7b-n8a 0
+linear n8b-n9a 100
+linear n9b-n10a 0
+linear n10b-n11a 40
+linear n11b-n12a 610
+boundary b2
+</code></pre>
+<a class="header" href="print.html#routes" id="routes"><h3>Routes</h3></a>
+<pre><code class="language-haskell">modelentry r1 from b1 {
+  exit sig1
+  length 50
+  sections [sec0]
+  switches []
+  contains []
+  release { length 50 trigger sec0 resources [sec0] }
+}
+route r2 {
+  entry sig1
+  exit sig2
+  entrysection sec1
+  length 200
+  sections [sec1]
+  switches []
+  contains []
+  release { length 200 trigger sec1 resources [sec1] }
+}
+route r3 {
+  entry sig2
+  exit sig3
+  entrysection sec2
+  length 100
+  sections [sec2]
+  switches []
+  contains []
+  release { length 100 trigger sec2 resources [sec2] }
+}
+modelexit r4 to b2 {
+  entry sig3
+  entrysection sec3
+  length 1650
+  sections [sec3]
+  switches []
+  contains []
+}
+</code></pre>
+<a class="header" href="print.html#view" id="view"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/railml_trivial-history.js"></script>
+<script src="examples/railml_trivial-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="print.html#conversion-from-railml-1" id="conversion-from-railml-1"><h1>Conversion from railML</h1></a>
+<a class="header" href="print.html#handwritten-exampletest-file" id="handwritten-exampletest-file"><h2>Handwritten example/test file</h2></a>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;railml xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.railml.org/schemas/2013&quot;&gt;
+  &lt;infrastructure&gt;
+    &lt;tracks&gt;
+        &lt;track name=&quot;SP1&quot;&gt;
+            &lt;trackTopology&gt;
+                &lt;trackBegin pos=&quot;0.0&quot;&gt;
+                    &lt;openEnd id=&quot;b1&quot; /&gt;
+                &lt;/trackBegin&gt;
+                &lt;trackEnd pos=&quot;1000.0&quot;&gt;
+                    &lt;openEnd id=&quot;b2&quot; /&gt;
+                &lt;/trackEnd&gt;
+                &lt;connections&gt;
+                &lt;/connections&gt;
+            &lt;/trackTopology&gt;
+            &lt;ocsElements&gt;
+                &lt;signals&gt;
+                    &lt;signal id=&quot;sig1&quot; name=&quot;Signal 1&quot; pos=&quot;50.0&quot; type=&quot;main&quot;  dir=&quot;up&quot;/&gt;
+                    &lt;signal id=&quot;sig2&quot; name=&quot;Signal 2&quot; pos=&quot;250.0&quot; type=&quot;main&quot; dir=&quot;up&quot;/&gt;
+                    &lt;signal id=&quot;sig3&quot; name=&quot;Signal 3&quot; pos=&quot;350.0&quot; type=&quot;main&quot; dir=&quot;up&quot;/&gt;
+                &lt;/signals&gt;
+                &lt;trainDetectionElements&gt;
+                    &lt;trainDetector id=&quot;d0&quot; name=&quot;detector 1&quot; pos=&quot;10.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d1&quot; name=&quot;detector 1&quot; pos=&quot;50.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d2&quot; name=&quot;detector 2&quot; pos=&quot;250.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d3&quot; name=&quot;detector 2&quot; pos=&quot;350.0&quot; /&gt;
+                    &lt;trainDetector id=&quot;d4&quot; name=&quot;detector 2&quot; pos=&quot;390.0&quot; /&gt;
+                &lt;/trainDetectionElements&gt;
+            &lt;/ocsElements&gt;
+        &lt;/track&gt;
+    &lt;/tracks&gt;
+  &lt;/infrastructure&gt;
+&lt;/railml&gt;
+</code></pre>
+<a class="header" href="print.html#generated-output-1" id="generated-output-1"><h2>Generated output</h2></a>
+<a class="header" href="print.html#infrastructure-2" id="infrastructure-2"><h3>Infrastructure</h3></a>
+<pre><code class="language-haskell">node b1-n0b
+node n1a-n1b(sight sig1 50)
+node n2a(exit sec0)-n2b(enter sec0)
+node n3a-n3b(signal sig1)
+node n4a(enter sec0, exit sec1)-n4b(exit sec0, enter sec1)
+node n5a-n5b(sight sig2 200)
+node n6a-n6b(sight sig3 200)
+node n7a-n7b(signal sig2)
+node n8a(enter sec1, exit sec2)-n8b(exit sec1, enter sec2)
+node n9a-n9b(signal sig3)
+node n10a(enter sec2, exit sec3)-n10b(exit sec2, enter sec3)
+node n11a(enter sec3)-n11b(exit sec3)
+node n12a-b2
+boundary b1
+linear n0b-n1a 0
+linear n1b-n2a 10
+linear n2b-n3a 40
+linear n3b-n4a 0
+linear n4b-n5a 0
+linear n5b-n6a 100
+linear n6b-n7a 100
+linear n7b-n8a 0
+linear n8b-n9a 100
+linear n9b-n10a 0
+linear n10b-n11a 40
+linear n11b-n12a 610
+boundary b2
+</code></pre>
+<a class="header" href="print.html#routes-1" id="routes-1"><h3>Routes</h3></a>
+<pre><code class="language-haskell">modelentry r1 from b1 {
+  exit sig1
+  length 50
+  sections [sec0]
+  switches []
+  contains []
+  release { length 50 trigger sec0 resources [sec0] }
+}
+route r2 {
+  entry sig1
+  exit sig2
+  entrysection sec1
+  length 200
+  sections [sec1]
+  switches []
+  contains []
+  release { length 200 trigger sec1 resources [sec1] }
+}
+route r3 {
+  entry sig2
+  exit sig3
+  entrysection sec2
+  length 100
+  sections [sec2]
+  switches []
+  contains []
+  release { length 100 trigger sec2 resources [sec2] }
+}
+modelexit r4 to b2 {
+  entry sig3
+  entrysection sec3
+  length 1650
+  sections [sec3]
+  switches []
+  contains []
+}
+</code></pre>
+<a class="header" href="print.html#view-1" id="view-1"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/railml_twotrack-history.js"></script>
+<script src="examples/railml_twotrack-vis.js"></script>
+<script src="railview.js"></script>
 <a class="header" href="print.html#case-studies" id="case-studies"><h1>Case studies</h1></a>
+<a class="header" href="print.html#valebø" id="valebø"><h1>Valebø</h1></a>
+<p>Station converted from Bane NOR's model of the Norweigan national rail network.
+This example demonstrates conversion from railML on a simple two track station.
+Tracks, switches, signals and detectors are imported from railML, while
+routes are derived from signal and detector placement. This may or may not be
+equal to the actual routes in use on the station, but suffices for our
+demonstrations.</p>
+<p><img src="valebo.png" alt="Valebø" title="Valebø" /></p>
+<a class="header" href="print.html#view-2" id="view-2"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/case_valebo-history.js"></script>
+<script src="examples/case_valebo-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="print.html#usage" id="usage"><h2>Usage</h2></a>
+<p>The view above solves the following usage scenario:</p>
+<pre><code class="language-haskell">vehicle passengertrain length 150.0 accel 1.0 brake 0.9 maxspeed 20.0
+
+movement passengertrain {
+  visit #start [sb1]
+  visit #end [skien]
+}
+
+</code></pre>
+<p>... by presenting the following dispatch plan:</p>
+<pre><code class="language-haskell">route r2
+route r5
+route r6
+route r7
+train t1 l=150.0 a=1.0 b=0.9 v=20.0 r1
+</code></pre>
+<a class="header" href="print.html#kolbotn" id="kolbotn"><h1>Kolbotn</h1></a>
+<p>Station converted from Bane NOR's model of the Norweigan national rail network.
+This example demonstrates conversion from railML
+for a double track station with a secondary track in the middle.</p>
+<p>Tracks, switches, signals and detectors are imported from railML, while
+routes are derived from signal and detector placement. This may or may not be
+equal to the actual routes in use on the station, but suffices for our
+demonstrations.</p>
+<p><img src="kolbotn.png" alt="Kolbotn" title="Kolbotn" /></p>
+<a class="header" href="print.html#view-3" id="view-3"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/case_kolbotn-history.js"></script>
+<script src="examples/case_kolbotn-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="print.html#usage-1" id="usage-1"><h2>Usage</h2></a>
+<p>The view above solves the following usage scenario:</p>
+<pre><code class="language-haskell">vehicle short length 110.0 accel 1.0 brake 0.9 maxspeed 20.0
+vehicle long length 220.0 accel 1.0 brake 0.9 maxspeed 10.0
+
+movement short {
+  visit #ax1 [inR]
+  visit #ax2 [outR]
+}
+
+movement short {
+  visit #bx1 [outL]
+  visit #bx2 [inL]
+}
+
+
+movement long {
+  visit #ay1 [inR]
+  visit #ay2 [outR]
+}
+
+movement long {
+  visit #by1 [outL]
+  visit #by2 [inL]
+}
+
+timing bx1 by1
+timing by2 bx2
+timing ax1 ay1
+timing ay2 ax2
+
+</code></pre>
+<p>... by presenting the following dispatch plan:</p>
+<pre><code class="language-haskell">route r11
+route r19
+train t3 l=110.0 a=1.0 b=0.9 v=20.0 r9
+train t4 l=110.0 a=1.0 b=0.9 v=20.0 r17
+wait
+route r10
+route r15
+route r30
+train t1 l=220.0 a=1.0 b=0.9 v=10.0 r9
+train t2 l=220.0 a=1.0 b=0.9 v=10.0 r17
+wait
+route r18
+route r21
+route r5
+route r12
+route r30
+wait
+route r20
+route r21
+</code></pre>
+<a class="header" href="print.html#eidsvoll" id="eidsvoll"><h1>Eidsvoll</h1></a>
+<p>Station converted from Bane NOR's model of the Norweigan national rail network.
+This example demonstrates conversion from railML
+for a line merge on several single tracks.</p>
+<p>Tracks, switches, signals and detectors are imported from railML, while
+routes are derived from signal and detector placement. This may or may not be
+equal to the actual routes in use on the station, but suffices for our
+demonstrations.</p>
+<p><img src="eidsvoll.png" alt="Eidsvoll" title="Eidsvoll" /></p>
+<a class="header" href="print.html#view-4" id="view-4"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/case_eidsvoll-history.js"></script>
+<script src="examples/case_eidsvoll-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="print.html#usage-2" id="usage-2"><h2>Usage</h2></a>
+<p>The view above solves the following usage scenario:</p>
+<pre><code class="language-haskell">vehicle short length 110.0 accel 1.0 brake 0.9 maxspeed 40.0
+vehicle long length 220.0 accel 1.0 brake 0.9 maxspeed 30.0
+vehicle goods length 650.0 accel 0.7 brake 0.65 maxspeed 10.0
+
+movement long {
+  visit #ax1 [gardermobanen]
+  visit #ax2 [dovrebanen]
+}
+
+movement long {
+  visit #ay1 [gardermobanen]
+  visit #ay2 [dovrebanen]
+}
+
+movement long {
+  visit #bz1 [dovrebanen]
+  visit #bz2 [hovedbanen]
+}
+
+movement long {
+  visit #az1 [dovrebanen]
+  visit #az2 [hovedbanen]
+}
+
+movement goods {
+  visit #cz1 [dovrebanen]
+  visit #cz2 [hovedbanen]
+}
+
+
+</code></pre>
+<p>... by presenting the following dispatch plan:</p>
+<pre><code class="language-haskell">route r19
+route r9
+route r2
+train t3 l=220.0 a=1.0 b=0.9 v=30.0 r8
+train t4 l=220.0 a=1.0 b=0.9 v=30.0 r1
+wait
+route r7
+route r3
+train t5 l=220.0 a=1.0 b=0.9 v=30.0 r1
+wait
+route r9
+train t1 l=650.0 a=0.7 b=0.65 v=10.0 r8
+wait
+route r10
+route r16
+route r18
+train t2 l=220.0 a=1.0 b=0.9 v=30.0 r8
+wait
+route r19
+route r6
+</code></pre>
+<a class="header" href="print.html#holmlia" id="holmlia"><h1>Holmlia</h1></a>
+<p>Station converted from Bane NOR's model of the Norweigan national rail network.
+This example demonstrates conversion from railML for a station with a diamond
+crossing. The diamond crossing is not yet supported.</p>
+<p><img src="holmlia.png" alt="Holmlia" title="Holmlia" /></p>
+<a class="header" href="print.html#view-5" id="view-5"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/case_holmlia-history.js"></script>
+<script src="examples/case_holmlia-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="print.html#usage-3" id="usage-3"><h2>Usage</h2></a>
+<p>The view above solves the following usage scenario:</p>
+<pre><code class="language-haskell">vehicle passengertrain length 150.0 accel 1.0 brake 0.9 maxspeed 20.0
+
+movement passengertrain {
+  visit #start [inR]
+  visit #end [outR]
+}
+
+</code></pre>
+<p>... by presenting the following dispatch plan:</p>
+<pre><code class="language-haskell">route r11
+route r25
+route r26
+route r27
+train t1 l=150.0 a=1.0 b=0.9 v=20.0 r20
+</code></pre>
+<a class="header" href="print.html#asker" id="asker"><h1>Asker</h1></a>
+<p>Station converted from Bane NOR's model of the Norweigan national rail network.
+This example demonstrates conversion from railML
+for a double junction station, connecting one double track with two double tracks,
+with additional station tracks.</p>
+<p>Tracks, switches, signals and detectors are imported from railML, while
+routes are derived from signal and detector placement. This may or may not be
+equal to the actual routes in use on the station, but suffices for our
+demonstrations.</p>
+<p><img src="asker.png" alt="Asker" title="Asker" /></p>
+<a class="header" href="print.html#view-6" id="view-6"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/case_asker-history.js"></script>
+<script src="examples/case_asker-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="print.html#usage-4" id="usage-4"><h2>Usage</h2></a>
+<p>The view above solves the following usage scenario:</p>
+<pre><code class="language-haskell">vehicle short length 110.0 accel 1.0 brake 0.9 maxspeed 20.0
+vehicle long length 220.0 accel 1.0 brake 0.9 maxspeed 10.0
+
+movement short {
+  visit #ax1 [DBinH]
+  visit #ax2 [DBoutH]
+}
+
+</code></pre>
+<p>... by presenting the following dispatch plan:</p>
+<pre><code class="language-haskell">route r14
+route r7
+train t1 l=110.0 a=1.0 b=0.9 v=20.0 r11
+</code></pre>
+<a class="header" href="print.html#arna" id="arna"><h1>Arna</h1></a>
+<p>Station converted from engineering project using <a href="https://www.railcomplete.com/">RailCOMPLETE</a> software.
+This example demonstrates conversion from railML
+for a single to double track junction with additional station tracks
+including a pendulum train cul-de-sac.</p>
+<p>Tracks, switches, signals and detectors are imported from railML, while
+routes are derived from signal and detector placement. This may or may not be
+equal to the actual routes in use on the station, but suffices for our
+demonstrations.</p>
+<p><img src="arna.png" alt="Arna" title="Arna" /></p>
+<a class="header" href="print.html#view-7" id="view-7"><h2>View</h2></a>
+<div id="railview"></div>
+<script src="d3/d3.js"></script>
+<script src="examples/case_arna-history.js"></script>
+<script src="examples/case_arna-vis.js"></script>
+<script src="railview.js"></script>
+<a class="header" href="print.html#usage-5" id="usage-5"><h2>Usage</h2></a>
+<p>The view above solves the following usage scenario:</p>
+<pre><code class="language-haskell">vehicle short length 110.0 accel 1.0 brake 0.9 maxspeed 20.0
+vehicle long length 220.0 accel 1.0 brake 0.9 maxspeed 10.0
+
+movement short {
+  visit #ax1 [rbff4z]
+  visit #ax2 [bergen2]
+}
+
+</code></pre>
+<p>... by presenting the following dispatch plan:</p>
+<pre><code class="language-haskell"></code></pre>
 <a class="header" href="print.html#case-a" id="case-a"><h1>Case A</h1></a>
 <p>Station from Norwegian engineering project, preliminary design.</p>
 <pre><code class="language-haskell">vehicle passengertrain length 150.0 accel 1.0 brake 0.9 maxspeed 20.0
@@ -538,11 +1012,11 @@ movement passengertrain {
   visit [b2iii]
 }
 </code></pre>
-<a class="header" href="print.html#view" id="view"><h2>View</h2></a>
+<a class="header" href="print.html#view-8" id="view-8"><h2>View</h2></a>
 <div id="railview"></div>
 <script src="d3/d3.js"></script>
-<script src="examples/case_a-history.js"></script>
-<script src="examples/case_a-vis.js"></script>
+<script src="examples/case_arna_byhand-history.js"></script>
+<script src="examples/case_arna_byhand-vis.js"></script>
 <script src="railview.js"></script>
 <a class="header" href="print.html#plan" id="plan"><h2>Plan</h2></a>
 <pre><code class="language-haskell">route r01x65
@@ -550,7 +1024,7 @@ route r65x75
 route r75x
 train t1 l=150.0 a=1.0 b=0.9 v=20.0 re1
 </code></pre>
-<a class="header" href="print.html#infrastructure-1" id="infrastructure-1"><h2>Infrastructure</h2></a>
+<a class="header" href="print.html#infrastructure-3" id="infrastructure-3"><h2>Infrastructure</h2></a>
 <pre><code class="language-haskell">-- TODO sight
 --
 -- Leftmost node is free-standing distant signal Fs11001

@@ -3,13 +3,13 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Consecutive train frequency - rolling</title>
+        <title>Input conversion from railML - rolling</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <base href="../">
+        <base href="">
 
         <link rel="stylesheet" href="book.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="rolling.html">Rolling</a></li><li><a href="model.html"><strong aria-hidden="true">1.</strong> Simulation model</a></li><li><ol class="section"><li><a href="dgraph.html"><strong aria-hidden="true">1.1.</strong> Infrastructure</a></li><li><a href="routes.html"><strong aria-hidden="true">1.2.</strong> Interlocking</a></li><li><a href="dispatch.html"><strong aria-hidden="true">1.3.</strong> Dispatch</a></li></ol></li><li><a href="simexamples.html"><strong aria-hidden="true">2.</strong> Simulation examples</a></li><li><ol class="section"><li><a href="examples/simplestop.html"><strong aria-hidden="true">2.1.</strong> Simple stop</a></li><li><a href="examples/single.html"><strong aria-hidden="true">2.2.</strong> Single track</a></li><li><a href="examples/twotrack.html"><strong aria-hidden="true">2.3.</strong> Two track station</a></li><li><a href="examples/multipletrains.html"><strong aria-hidden="true">2.4.</strong> Multiple trains</a></li><li><a href="examples/partialrelease.html"><strong aria-hidden="true">2.5.</strong> Partial release</a></li><li><a href="examples/twoway.html"><strong aria-hidden="true">2.6.</strong> Two-way traffic</a></li></ol></li><li><a href="planner.html"><strong aria-hidden="true">3.</strong> Planning model</a></li><li><a href="plannerexamples.html"><strong aria-hidden="true">4.</strong> Verification examples</a></li><li><ol class="section"><li><a href="examples/runningtime.html"><strong aria-hidden="true">4.1.</strong> Running time</a></li><li><a href="examples/frequency.html" class="active"><strong aria-hidden="true">4.2.</strong> Consecutive train frequency</a></li><li><a href="examples/overtaking.html"><strong aria-hidden="true">4.3.</strong> Overtaking</a></li><li><a href="examples/crossing.html"><strong aria-hidden="true">4.4.</strong> Crossing</a></li></ol></li><li><a href="tools.html"><strong aria-hidden="true">5.</strong> Input conversion from railML</a></li><li><ol class="section"><li><a href="examples/railml_trivial.html"><strong aria-hidden="true">5.1.</strong> railML trivial example</a></li><li><a href="examples/railml_twotrack.html"><strong aria-hidden="true">5.2.</strong> railML two track</a></li></ol></li><li><a href="casestudies.html"><strong aria-hidden="true">6.</strong> Case studies</a></li><li><ol class="section"><li><a href="examples/case_valebo.html"><strong aria-hidden="true">6.1.</strong> Valebø</a></li><li><a href="examples/case_kolbotn.html"><strong aria-hidden="true">6.2.</strong> Kolbotn</a></li><li><a href="examples/case_eidsvoll.html"><strong aria-hidden="true">6.3.</strong> Eidsvoll</a></li><li><a href="examples/case_holmlia.html"><strong aria-hidden="true">6.4.</strong> Holmlia</a></li><li><a href="examples/case_asker.html"><strong aria-hidden="true">6.5.</strong> Asker</a></li><li><a href="examples/case_arna.html"><strong aria-hidden="true">6.6.</strong> Arna A20</a></li><li><a href="examples/case_arna_byhand.html"><strong aria-hidden="true">6.7.</strong> Arna A20 by hand</a></li></ol></li></ol>
+            <ol class="chapter"><li class="affix"><a href="rolling.html">Rolling</a></li><li><a href="model.html"><strong aria-hidden="true">1.</strong> Simulation model</a></li><li><ol class="section"><li><a href="dgraph.html"><strong aria-hidden="true">1.1.</strong> Infrastructure</a></li><li><a href="routes.html"><strong aria-hidden="true">1.2.</strong> Interlocking</a></li><li><a href="dispatch.html"><strong aria-hidden="true">1.3.</strong> Dispatch</a></li></ol></li><li><a href="simexamples.html"><strong aria-hidden="true">2.</strong> Simulation examples</a></li><li><ol class="section"><li><a href="examples/simplestop.html"><strong aria-hidden="true">2.1.</strong> Simple stop</a></li><li><a href="examples/single.html"><strong aria-hidden="true">2.2.</strong> Single track</a></li><li><a href="examples/twotrack.html"><strong aria-hidden="true">2.3.</strong> Two track station</a></li><li><a href="examples/multipletrains.html"><strong aria-hidden="true">2.4.</strong> Multiple trains</a></li><li><a href="examples/partialrelease.html"><strong aria-hidden="true">2.5.</strong> Partial release</a></li><li><a href="examples/twoway.html"><strong aria-hidden="true">2.6.</strong> Two-way traffic</a></li></ol></li><li><a href="planner.html"><strong aria-hidden="true">3.</strong> Planning model</a></li><li><a href="plannerexamples.html"><strong aria-hidden="true">4.</strong> Verification examples</a></li><li><ol class="section"><li><a href="examples/runningtime.html"><strong aria-hidden="true">4.1.</strong> Running time</a></li><li><a href="examples/frequency.html"><strong aria-hidden="true">4.2.</strong> Consecutive train frequency</a></li><li><a href="examples/overtaking.html"><strong aria-hidden="true">4.3.</strong> Overtaking</a></li><li><a href="examples/crossing.html"><strong aria-hidden="true">4.4.</strong> Crossing</a></li></ol></li><li><a href="tools.html" class="active"><strong aria-hidden="true">5.</strong> Input conversion from railML</a></li><li><ol class="section"><li><a href="examples/railml_trivial.html"><strong aria-hidden="true">5.1.</strong> railML trivial example</a></li><li><a href="examples/railml_twotrack.html"><strong aria-hidden="true">5.2.</strong> railML two track</a></li></ol></li><li><a href="casestudies.html"><strong aria-hidden="true">6.</strong> Case studies</a></li><li><ol class="section"><li><a href="examples/case_valebo.html"><strong aria-hidden="true">6.1.</strong> Valebø</a></li><li><a href="examples/case_kolbotn.html"><strong aria-hidden="true">6.2.</strong> Kolbotn</a></li><li><a href="examples/case_eidsvoll.html"><strong aria-hidden="true">6.3.</strong> Eidsvoll</a></li><li><a href="examples/case_holmlia.html"><strong aria-hidden="true">6.4.</strong> Holmlia</a></li><li><a href="examples/case_asker.html"><strong aria-hidden="true">6.5.</strong> Asker</a></li><li><a href="examples/case_arna.html"><strong aria-hidden="true">6.6.</strong> Arna A20</a></li><li><a href="examples/case_arna_byhand.html"><strong aria-hidden="true">6.7.</strong> Arna A20 by hand</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -149,74 +149,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="examples/frequency.html#frequency" id="frequency"><h1>Frequency</h1></a>
-<p>An important performance indicator for a railway station is the
-frequency with which it can handle consecutive trains.
-To verify e.g. that the two-track station can handle
-a passenger train every 90 sec, we write the following <code>usage</code> file:</p>
-<pre><code class="language-haskell">vehicle passengertrain length 150.0 accel 1.0 brake 0.9 maxspeed 20.0
-
-movement passengertrain {
-  visit #start_p1 [b1]
-  visit #end_p1 [b2]
-}
-
-movement passengertrain {
-  visit #start_p2 [b1]
-  visit #end_p2 [b2]
-}
-movement passengertrain {
-  visit #start_p3 [b1]
-  visit #end_p3 [b2]
-}
-movement passengertrain {
-  visit #start_p4 [b1]
-  visit #end_p4 [b2]
-}
-
-timing end_p1 end_p2 50.0
-timing end_p2 end_p3 50.0
-timing end_p3 end_p4 50.0
-</code></pre>
-<p>Running the <code>railperfcheck</code> program on this usage gives success, and outputs
-the following dispatch plan:</p>
-<pre><code class="language-haskell">route ra2
-route rexita2
-train t4 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
-wait
-route ra1
-route rexita1
-train t3 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
-wait
-route ra1
-route rexita1
-train t2 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
-wait
-route ra2
-route rexita2
-train t1 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
-
-</code></pre>
-<a class="header" href="examples/frequency.html#witness" id="witness"><h3>Witness</h3></a>
-<p>The plan represents a witness for the satisfaction of the properties given in the <code>usage</code> file, and the results can be inspected as usual.</p>
-<div id="railview"></div>
-<script src="d3/d3.js"></script>
-<script src="examples/frequency-history.js"></script>
-<script src="examples/frequency-vis.js"></script>
-<script src="railview.js"></script>
+                        <a class="header" href="tools.html#input-conversion-from-railml" id="input-conversion-from-railml"><h1>Input conversion from railML</h1></a>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="examples/runningtime.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="examples/crossing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="examples/overtaking.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="examples/railml_trivial.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -228,13 +174,13 @@ train t1 l=150.0 a=1.0 b=0.9 v=20.0 rentrya
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="examples/runningtime.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="examples/crossing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="examples/overtaking.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="examples/railml_trivial.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

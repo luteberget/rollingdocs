@@ -150,8 +150,47 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="print.html#rolling" id="rolling"><h1>Rolling</h1></a>
-<a class="header" href="print.html#simulation-model" id="simulation-model"><h1>Simulation model</h1></a>
+<p><img src="rolling.png" alt="Rolling" /></p>
+<p><strong>Rolling</strong> is a <em>fast</em> railway performance analysis tool for use in <strong>construction project verfication</strong>.</p>
+<a class="header" href="print.html#features" id="features"><h2>Features:</h2></a>
+<ul>
+<li><strong>Dispatch mode</strong>: calculate train trajectories with a given dispatch plan using an infrastructure and interlocking controller model with the following features:
+<ul>
+<li><em>Topology and lengths</em> -- trains travel on a model of the railway network with given distances, guided by switches and other movable track elements.</li>
+<li><em>Laws of motion</em> -- trains move within the limits of given maximum acceleration and braking power. A train driver model is used to plan ahead for braking so that the train respects its given movement authority.</li>
+<li><em>Allocation of resources</em> -- a resource-based model of the interlocking ensure that conflicting routes are not communicated to the trains. Requested movement may be queued so that the dispatch happens as soon as resources are available.</li>
+<li><em>Communication</em> -- traditional optical signalling and automatic train protection systems impose a communication constraint which may be the cause of lower performance. Rolling's communication model is suitable for optical signalling, point-based and linear traditional train protection systems, and radio-based communications such as ETCS.</li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><strong>Verification mode</strong>: check that performance requirements are satisfied. Fully automated planning produces a dispatch plan which satisfies the requirements, or reports that no such plan exists.
+<ul>
+<li><em>Specification format</em> -- specify performance properties at a &quot;high level&quot;, meaning that unneccesary details, such as specific tracks, signals, and routes, are left out. This saves effort and is especially useful when these details are unknown or subject to change, as is the case in construction projects.</li>
+<li><em>Smart planning</em> -- solve complicated maneuvering puzzles automatically.</li>
+<li><em>Full automation</em> -- meaning that as your track and component layout changes during the project, performance specifications can be verified again with no extra effort. Errors which would cause operational problems can be caught immediately.</li>
+</ul>
+</li>
+</ul>
+<p>For construction projects, where the track layout plan is under development, Rolling provides:</p>
+<ul>
+<li>Detailed analysis of capacity bottlenecks</li>
+<li>Regression</li>
+</ul>
+<a class="header" href="print.html#model" id="model"><h1>Model</h1></a>
+<p>The input model for <code>rolling</code> consists of three main components:</p>
+<ul>
+<li>The <strong>infrastructure</strong> model contains the tracks, movable elements, and
+signalling and interlocking components which are needed to do a
+running time analysis of railway dispatching.</li>
+<li>The <strong>interlocking</strong> model describes the elementary routes that can
+be dispatched.</li>
+<li>The <strong>dispatch</strong> list contains times of train and route setting.</li>
+</ul>
+<p>Each of these are described in more detail in their respective sections.</p>
 <a class="header" href="print.html#infrastructure" id="infrastructure"><h1>Infrastructure</h1></a>
+<p>The <code>rolling</code> infrastructure model is a double node graph (ref. opentrack predecessor literature).</p>
 <a class="header" href="print.html#interlocking" id="interlocking"><h1>Interlocking</h1></a>
 <a class="header" href="print.html#dispatch" id="dispatch"><h1>Dispatch</h1></a>
 <a class="header" href="print.html#simulation-examples" id="simulation-examples"><h1>Simulation examples</h1></a>

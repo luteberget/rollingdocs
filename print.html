@@ -152,31 +152,49 @@
                         <a class="header" href="print.html#rolling" id="rolling"><h1>Rolling</h1></a>
 <p><img src="rolling.png" alt="Rolling" /></p>
 <p><strong>Rolling</strong> is a <em>fast</em> railway performance analysis tool for use in <strong>construction project verfication</strong>.</p>
-<a class="header" href="print.html#features" id="features"><h2>Features:</h2></a>
+<a class="header" href="print.html#features" id="features"><h2>Features</h2></a>
+<a class="header" href="print.html#dispatch-mode" id="dispatch-mode"><h3>Dispatch mode</h3></a>
+<p><img src="dispatch.png" alt="Dispatch mode" /></p>
+<p>The dispatch plan (1) is executed by sending commands to the interlocking controller (2), which communicates movement authority to the trains (3).</p>
+<p>Rolling calculates train trajectories with a given dispatch plan using an infrastructure and interlocking controller model with the following features:</p>
 <ul>
-<li><strong>Dispatch mode</strong>: calculate train trajectories with a given dispatch plan using an infrastructure and interlocking controller model with the following features:
-<ul>
-<li><em>Topology and lengths</em> -- trains travel on a model of the railway network with given distances, guided by switches and other movable track elements.</li>
-<li><em>Laws of motion</em> -- trains move within the limits of given maximum acceleration and braking power. A train driver model is used to plan ahead for braking so that the train respects its given movement authority.</li>
-<li><em>Allocation of resources</em> -- a resource-based model of the interlocking ensure that conflicting routes are not communicated to the trains. Requested movement may be queued so that the dispatch happens as soon as resources are available.</li>
-<li><em>Communication</em> -- traditional optical signalling and automatic train protection systems impose a communication constraint which may be the cause of lower performance. Rolling's communication model is suitable for optical signalling, point-based and linear traditional train protection systems, and radio-based communications such as ETCS.</li>
-</ul>
+<li>
+<p><strong>Topology and lengths</strong> -- trains travel on a model of the railway network with given distances, guided by switches and other movable track elements.</p>
+<p><img src="infrastructuremodel.png" alt="Infrastructure model" /></p>
+</li>
+<li>
+<p><strong>Laws of motion</strong> -- trains move within the limits of given maximum acceleration and braking power. A train driver model is used to plan ahead for braking so that the train respects its given movement authority.</p>
+<p><img src="velocityplotannotated.png" alt="Velocity profile" /></p>
+</li>
+<li>
+<p><strong>Allocation of resources</strong> -- a resource-based model of the interlocking ensures that conflicting routes are not communicated to the trains. Requested movement may be queued so that the dispatch happens as soon as resources are available.</p>
+<p><img src="queueing.gif" alt="Allocation of resources" /></p>
+</li>
+<li>
+<p><strong>Communication</strong> -- traditional optical signalling and automatic train protection systems impose a communication constraint which may be the cause of lower performance. Rolling's communication model is suitable for optical signalling, point-based and linear traditional train protection systems, and radio-based communications such as ETCS.</p>
+<p><img src="communication.png" alt="Communication" /></p>
 </li>
 </ul>
-<p></p>
+<a class="header" href="print.html#verification-mode" id="verification-mode"><h3>Verification mode</h3></a>
+<p>Check that performance requirements are satisfied. Fully automated planning produces a dispatch plan which satisfies the requirements, or reports that no such plan exists.</p>
+<p><img src="altplans.png" alt="Automated planning" /></p>
 <ul>
-<li><strong>Verification mode</strong>: check that performance requirements are satisfied. Fully automated planning produces a dispatch plan which satisfies the requirements, or reports that no such plan exists.
-<ul>
-<li><em>Specification format</em> -- specify performance properties at a &quot;high level&quot;, meaning that unneccesary details, such as specific tracks, signals, and routes, are left out. This saves effort and is especially useful when these details are unknown or subject to change, as is the case in construction projects.</li>
-<li><em>Smart planning</em> -- solve complicated maneuvering puzzles automatically.</li>
-<li><em>Full automation</em> -- meaning that as your track and component layout changes during the project, performance specifications can be verified again with no extra effort. Errors which would cause operational problems can be caught immediately.</li>
-</ul>
+<li>
+<p><strong>Specification format</strong> -- specify performance properties at a &quot;high level&quot;, meaning that unneccesary details, such as specific tracks, signals, and routes, are left out. This saves effort and is especially useful when these details are unknown or subject to change, as is the case in construction projects.</p>
+</li>
+<li>
+<p><strong>Smart planning</strong> -- solve complicated maneuvering puzzles automatically.</p>
+<p><img src="eidsvoll5plan.gif" alt="Smart planning" /></p>
+</li>
+<li>
+<p><strong>Full automation</strong> -- meaning that as your track and component layout changes during the project, performance specifications can be verified again with no extra effort. Errors which would cause operational problems can be caught immediately.</p>
 </li>
 </ul>
+<a class="header" href="print.html#use-case" id="use-case"><h2>Use case</h2></a>
 <p>For construction projects, where the track layout plan is under development, Rolling provides:</p>
 <ul>
-<li>Detailed analysis of capacity bottlenecks</li>
-<li>Regression</li>
+<li>Detailed analysis of capacity bottlenecks.</li>
+<li>Regression testing after project changes.</li>
 </ul>
 <a class="header" href="print.html#model" id="model"><h1>Model</h1></a>
 <p>The input model for <code>rolling</code> consists of three main components:</p>
@@ -190,7 +208,47 @@ be dispatched.</li>
 </ul>
 <p>Each of these are described in more detail in their respective sections.</p>
 <a class="header" href="print.html#infrastructure" id="infrastructure"><h1>Infrastructure</h1></a>
-<p>The <code>rolling</code> infrastructure model is a double node graph (ref. opentrack predecessor literature).</p>
+<p>The <code>rolling</code> infrastructure model is conceptually a double node graph, which is similar to a graph, with the difference that each node has two sides. A train entering a node from an edge connected to one side of the node can only exit the node through edges on the opposide side of the node.</p>
+<p><img src="dgraph1.png" alt="Dgraph 1" /></p>
+<p>On the railway network, paths p-q-r and p-q-u exist, in both directions. However, in a conventional undirected graph representation, there would also be a path r-q-u.</p>
+<p><img src="dgraph2.png" alt="Dgraph 2" /></p>
+<p>When we extend the graph concept to include two sides of each node, there is no longer a path r-q-u.</p>
+<p><img src="dgraph3.png" alt="Dgraph 3" /></p>
+<p>This model allows a sense of <em>local directedness</em> without deciding on a global direction concept such as up/down or outgoing/incoming often used in railway engineering. A global directionality requires considering special cases to handle railway networks where
+a train's up/down direction may change without the train reversing its direction, such as the <a href="examples/baloon.md">balloon loop example</a>.</p>
+<p>Each side of the node may have a set of <em>objects</em>, which are read by a passing train on the <strong>exit side</strong> of the node, i.e. the opposite side of the node from the edge on which the train entered.</p>
+<p><img src="dgraphsides.png" alt="Dgraph sides" /></p>
+<a class="header" href="print.html#input-format" id="input-format"><h2>Input format</h2></a>
+<p>The DGraph input file format consists of statements separated by whitespace which describe the double nodes, both sides together, and various edge types with corresponding lengths.</p>
+<a class="header" href="print.html#nodes" id="nodes"><h2>Nodes</h2></a>
+<p>The syntax for describing nodes is as follows:</p>
+<pre><code class="language-haskell">node &lt;name&gt;[(&lt;objects&gt;)]-&lt;name&gt;[(&lt;objects&gt;)]
+</code></pre>
+<p>Examples:</p>
+<pre><code class="language-haskell">node n1-n2
+node n2-n3(signal s1)
+node n3(enter sec1)-n4
+</code></pre>
+<a class="header" href="print.html#edges" id="edges"><h2>Edges</h2></a>
+<p>Edges are either <strong>linear</strong>, <strong>switches</strong> or <strong>boundaries</strong>. Each node may only be mentioned in one edge statement. Nodes which are not mentioned in edge statements are assumed to be the end of a track.</p>
+<a class="header" href="print.html#linear" id="linear"><h3>Linear</h3></a>
+<p>Linear edges simply connect two nodes by a length of track using the syntax <code>linear &lt;node&gt;-&lt;node&gt; &lt;distance&gt;</code>.</p>
+<p>Example:</p>
+<pre><code class="language-haskell">linear n1-n2 124.5
+</code></pre>
+<a class="header" href="print.html#switches" id="switches"><h3>Switches</h3></a>
+<p>Switches
+Currently, only two-way switches are supported.</p>
+<p>Example:</p>
+<pre><code class="language-haskell">switch sw1 left n1-(n2 200.0, n3 220.0)
+</code></pre>
+<a class="header" href="print.html#boundaries" id="boundaries"><h3>Boundaries</h3></a>
+<p>Boundaries are nodes where a train may enter or leave the model. When entering, the train's front simply appears at the node, while the body of the train is still outside of the model. When leaving, the front of the train visits the boundary node and the train travels on until the back of the train visits the boundary node, after which the train is considered to be finished.</p>
+<p>The name of the boundary node is used in dispatch plans and in route files to refer to the location of the model boundary.</p>
+<p>The syntax is <code>boundary &lt;node&gt;</code>.</p>
+<p>Example:</p>
+<pre><code class="language-haskell">boundary n1
+</code></pre>
 <a class="header" href="print.html#interlocking" id="interlocking"><h1>Interlocking</h1></a>
 <a class="header" href="print.html#dispatch" id="dispatch"><h1>Dispatch</h1></a>
 <a class="header" href="print.html#simulation-examples" id="simulation-examples"><h1>Simulation examples</h1></a>

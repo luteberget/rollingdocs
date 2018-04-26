@@ -150,7 +150,47 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="dgraph.html#infrastructure" id="infrastructure"><h1>Infrastructure</h1></a>
-<p>The <code>rolling</code> infrastructure model is a double node graph (ref. opentrack predecessor literature).</p>
+<p>The <code>rolling</code> infrastructure model is conceptually a double node graph, which is similar to a graph, with the difference that each node has two sides. A train entering a node from an edge connected to one side of the node can only exit the node through edges on the opposide side of the node.</p>
+<p><img src="dgraph1.png" alt="Dgraph 1" /></p>
+<p>On the railway network, paths p-q-r and p-q-u exist, in both directions. However, in a conventional undirected graph representation, there would also be a path r-q-u.</p>
+<p><img src="dgraph2.png" alt="Dgraph 2" /></p>
+<p>When we extend the graph concept to include two sides of each node, there is no longer a path r-q-u.</p>
+<p><img src="dgraph3.png" alt="Dgraph 3" /></p>
+<p>This model allows a sense of <em>local directedness</em> without deciding on a global direction concept such as up/down or outgoing/incoming often used in railway engineering. A global directionality requires considering special cases to handle railway networks where
+a train's up/down direction may change without the train reversing its direction, such as the <a href="examples/baloon.md">balloon loop example</a>.</p>
+<p>Each side of the node may have a set of <em>objects</em>, which are read by a passing train on the <strong>exit side</strong> of the node, i.e. the opposite side of the node from the edge on which the train entered.</p>
+<p><img src="dgraphsides.png" alt="Dgraph sides" /></p>
+<a class="header" href="dgraph.html#input-format" id="input-format"><h2>Input format</h2></a>
+<p>The DGraph input file format consists of statements separated by whitespace which describe the double nodes, both sides together, and various edge types with corresponding lengths.</p>
+<a class="header" href="dgraph.html#nodes" id="nodes"><h2>Nodes</h2></a>
+<p>The syntax for describing nodes is as follows:</p>
+<pre><code class="language-haskell">node &lt;name&gt;[(&lt;objects&gt;)]-&lt;name&gt;[(&lt;objects&gt;)]
+</code></pre>
+<p>Examples:</p>
+<pre><code class="language-haskell">node n1-n2
+node n2-n3(signal s1)
+node n3(enter sec1)-n4
+</code></pre>
+<a class="header" href="dgraph.html#edges" id="edges"><h2>Edges</h2></a>
+<p>Edges are either <strong>linear</strong>, <strong>switches</strong> or <strong>boundaries</strong>. Each node may only be mentioned in one edge statement. Nodes which are not mentioned in edge statements are assumed to be the end of a track.</p>
+<a class="header" href="dgraph.html#linear" id="linear"><h3>Linear</h3></a>
+<p>Linear edges simply connect two nodes by a length of track using the syntax <code>linear &lt;node&gt;-&lt;node&gt; &lt;distance&gt;</code>.</p>
+<p>Example:</p>
+<pre><code class="language-haskell">linear n1-n2 124.5
+</code></pre>
+<a class="header" href="dgraph.html#switches" id="switches"><h3>Switches</h3></a>
+<p>Switches
+Currently, only two-way switches are supported.</p>
+<p>Example:</p>
+<pre><code class="language-haskell">switch sw1 left n1-(n2 200.0, n3 220.0)
+</code></pre>
+<a class="header" href="dgraph.html#boundaries" id="boundaries"><h3>Boundaries</h3></a>
+<p>Boundaries are nodes where a train may enter or leave the model. When entering, the train's front simply appears at the node, while the body of the train is still outside of the model. When leaving, the front of the train visits the boundary node and the train travels on until the back of the train visits the boundary node, after which the train is considered to be finished.</p>
+<p>The name of the boundary node is used in dispatch plans and in route files to refer to the location of the model boundary.</p>
+<p>The syntax is <code>boundary &lt;node&gt;</code>.</p>
+<p>Example:</p>
+<pre><code class="language-haskell">boundary n1
+</code></pre>
 
                     </main>
 

@@ -149,9 +149,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="routes.html#interlocking" id="interlocking"><h1>Interlocking</h1></a>
-<p>The safety-critical low-level control systems in railways tasked with</p>
-<p>Routes are the <strong>atomic unit of allocation</strong> from the dispatcher's point of view.
+                        <a class="header" href="routes.html#interlocking-" id="interlocking-"><h1>Interlocking 🔒</h1></a>
+<p>An <strong>interlocking</strong> is the safety-critical low-level control system in railways, tasked with ensuring that all actions involving signals and movable elements are performed in a safe manner.</p>
+<p>The main operating mode of the interlocking is to take requests for <strong>setting a route</strong>, and then moving track elements and giving signals if this route is safe to set.  Routes are the <strong>atomic unit of allocation</strong> from the dispatcher's point of view.
 Note that the atomic unit of de-allocation is typically smaller than the route,
 a feature of interlockings which is called <em>partial release</em>.</p>
 <p>The <em>routes file</em> contains set of whitespace-separated <em>route statements</em>,
@@ -252,6 +252,7 @@ This track section is called <em>overlap</em> (british) or <em>safety zone</em> 
 Overlaps require special logic for allowing the extension of a route</p>
 <p>Overlaps are currently not supported.</p>
 <a class="header" href="routes.html#flank-protection" id="flank-protection"><h2>Flank protection</h2></a>
+<p>Flank protection can be implemented by adding requirements of exclusive allocation of resources such as detection sections and switches.</p>
 
                     </main>
 

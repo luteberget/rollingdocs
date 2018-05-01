@@ -149,7 +149,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="dispatch.html#dispatch" id="dispatch"><h1>Dispatch</h1></a>
+                        <a class="header" href="dispatch.html#dispatch-" id="dispatch-"><h1>Dispatch 👋</h1></a>
 <p>The dispatch plan file represents a timeline of the following types of events:</p>
 <ul>
 <li>Trains entering the infrastructure from a given entry route.</li>
@@ -157,7 +157,7 @@
 </ul>
 <p>The <code>train</code> and <code>route</code> statements can be seen as launching concurrent processes in the simulation.</p>
 <a class="header" href="dispatch.html#statements" id="statements"><h2>Statements</h2></a>
-<a class="header" href="dispatch.html#train" id="train"><h3>Train</h3></a>
+<a class="header" href="dispatch.html#train-" id="train-"><h3>Train 🚆</h3></a>
 <p>A train starting at the current time is described by the following syntax:</p>
 <pre><code>train &lt;name&gt; l=&lt;number&gt; a=&lt;number&gt; b=&lt;number&gt; v=&lt;number&gt; &lt;route-name&gt;
 </code></pre>
@@ -182,12 +182,12 @@
 </li>
 <li><strong>Finished</strong>: when the train has exited through a model boundary, it is removed from the model and considered finished.</li>
 </ol>
-<a class="header" href="dispatch.html#route" id="route"><h3>Route</h3></a>
+<a class="header" href="dispatch.html#route-" id="route-"><h3>Route 🛤</h3></a>
 <p>A route request dispatches at the current time is represented using the following syntax:</p>
 <pre><code>route &lt;route-name&gt;
 </code></pre>
 <p>This statement starts a route activation process. The process will wait until all resources are available before reserving the resources and starting to move any movable elements. This means that two conflicting routes may be requested, after which the first route's activation will finish, and the second route to be requested will remain waiting until all required resources are available.</p>
-<a class="header" href="dispatch.html#wait" id="wait"><h3>Wait</h3></a>
+<a class="header" href="dispatch.html#wait-" id="wait-"><h3>Wait ⏱</h3></a>
 <p>Passing time is represented by a separate statement:</p>
 <pre><code>wait &lt;number&gt;?
 </code></pre>

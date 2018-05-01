@@ -199,15 +199,15 @@
 <a class="header" href="print.html#model" id="model"><h1>Model</h1></a>
 <p>The input model for <code>rolling</code> consists of three main components:</p>
 <ul>
-<li>The <strong>infrastructure</strong> model contains the tracks, movable elements, and
+<li>The <strong><a href="./dgraph.html">infrastructure</a> 🌍</strong> model contains the tracks, movable elements, and
 signalling and interlocking components which are needed to do a
 running time analysis of railway dispatching.</li>
-<li>The <strong>interlocking</strong> model describes the elementary routes that can
+<li>The <strong><a href="./routes.html">interlocking</a> 🔒</strong> model describes the elementary routes that can
 be dispatched.</li>
-<li>The <strong>dispatch</strong> list contains times of train and route setting.</li>
+<li>The <strong><a href="./dispatch.html">dispatch</a> 👋</strong> list contains times of train and route setting.</li>
 </ul>
 <p>Each of these are described in more detail in their respective sections.</p>
-<a class="header" href="print.html#infrastructure" id="infrastructure"><h1>Infrastructure</h1></a>
+<a class="header" href="print.html#infrastructure-" id="infrastructure-"><h1>Infrastructure 🌍</h1></a>
 <p>The <code>rolling</code> infrastructure model uses a double node graph model. To understand the motivation for the double node graph, consider the
 railway junction in the figure below.</p>
 <p><img src="dgraph1.png" alt="Dgraph 1" /></p>
@@ -222,7 +222,7 @@ a train's up/down direction may change without the train reversing its direction
 <p><img src="dgraphsides.png" alt="Dgraph sides" /></p>
 <a class="header" href="print.html#input-format" id="input-format"><h2>Input format</h2></a>
 <p>The DGraph input file format consists of statements separated by whitespace which describe the double nodes, both sides together, and various edge types with corresponding lengths.</p>
-<a class="header" href="print.html#nodes" id="nodes"><h2>Nodes</h2></a>
+<a class="header" href="print.html#nodes-" id="nodes-"><h2>Nodes 🔶</h2></a>
 <p>The syntax for describing nodes is as follows:</p>
 <pre><code class="language-haskell">node &lt;name&gt;[(&lt;objects&gt;)]-&lt;name&gt;[(&lt;objects&gt;)]
 </code></pre>
@@ -231,7 +231,7 @@ a train's up/down direction may change without the train reversing its direction
 node n2-n3(signal s1)
 node n3(enter sec1)-n4
 </code></pre>
-<a class="header" href="print.html#edges" id="edges"><h2>Edges</h2></a>
+<a class="header" href="print.html#edges-" id="edges-"><h2>Edges ↔</h2></a>
 <p>Edges are either <strong>linear</strong>, <strong>switches</strong> or <strong>boundaries</strong>. Each node may only be mentioned in one edge statement. Nodes which are not mentioned in edge statements are assumed to be the end of a track.</p>
 <a class="header" href="print.html#linear" id="linear"><h3>Linear</h3></a>
 <p>Linear edges simply connect two nodes by a length of track using the syntax <code>linear &lt;node&gt;-&lt;node&gt; &lt;distance&gt;</code>.</p>
@@ -256,22 +256,22 @@ Currently, only two-way switches are supported.</p>
 <p>The possible object types are:</p>
 <ul>
 <li>
-<p><strong>Signals</strong>: a signal with the given name is located at the current node. Note that this has no actual impact on trains, as only the <code>sight</code> statements can add the signal to the train's communication list. This statement is used for visualization purposes.</p>
+<p><strong>Signal 🚦</strong>: a signal with the given name is located at the current node. Note that this has no actual impact on trains, as only the <code>sight</code> statements can add the signal to the train's communication list. This statement is used for visualization purposes.</p>
 <p>Syntax: <code>signal &lt;name&gt;</code></p>
 <p>Example: <code>signal sig1</code></p>
 </li>
 <li>
-<p><strong>Enter section</strong>: a train whose front passes the current node will enter a detection section. Note that a train detector (e.g. axle counter) or a track circuit border will typically need to be translated into four <code>enter</code>/<code>exit</code> statements, an <code>enter</code> for the section on each side of the detector, and an <code>exit</code> for each section on the opposite sides. The rationale for this representation is that it is a low-level instruction that the train can simply read and execute, and that is allows for more exotic train detection setups, such as overlapping sections.</p>
+<p><strong>Enter section ⬇</strong>: a train whose front passes the current node will enter a detection section. Note that a train detector (e.g. axle counter) or a track circuit border will typically need to be translated into four <code>enter</code>/<code>exit</code> statements, an <code>enter</code> for the section on each side of the detector, and an <code>exit</code> for each section on the opposite sides. The rationale for this representation is that it is a low-level instruction that the train can simply read and execute, and that is allows for more exotic train detection setups, such as overlapping sections.</p>
 <p>Syntax: <code>enter &lt;section-name&gt;</code></p>
 <p>Example: <code>enter section1</code></p>
 </li>
 <li>
-<p><strong>Exit section</strong>: a train whose back passes the current node will exit a detection section.</p>
+<p><strong>Exit section ⬆</strong>: a train whose back passes the current node will exit a detection section.</p>
 <p>Syntax: <code>exit &lt;section-name&gt;</code></p>
 <p>Example: <code>exit section1</code></p>
 </li>
 <li>
-<p><strong>Sight</strong>: after visiting the current node, trains can <em>see</em> a given signal for a given travel distance. Typically, this node will appear at a given distance before a signal, and the given distance will be the travel distance from the sight object's node to the signal.</p>
+<p><strong>Sight 👁</strong>: after visiting the current node, trains can <em>see</em> a given signal for a given travel distance. Typically, this node will appear at a given distance before a signal, and the given distance will be the travel distance from the sight object's node to the signal.</p>
 <p>Syntax: <code>sight &lt;signal-name&gt; &lt;distance&gt;</code></p>
 <p>Example: <code>signal sig1 400.0</code></p>
 </li>
@@ -281,9 +281,9 @@ Currently, only two-way switches are supported.</p>
 <pre><code class="language-haskell">node n1(enter section1, exit section2)
     -n2(signal sig1, sight sig2 800.0, exit section1, enter section2)
 </code></pre>
-<a class="header" href="print.html#interlocking" id="interlocking"><h1>Interlocking</h1></a>
-<p>The safety-critical low-level control systems in railways tasked with</p>
-<p>Routes are the <strong>atomic unit of allocation</strong> from the dispatcher's point of view.
+<a class="header" href="print.html#interlocking-" id="interlocking-"><h1>Interlocking 🔒</h1></a>
+<p>An <strong>interlocking</strong> is the safety-critical low-level control system in railways, tasked with ensuring that all actions involving signals and movable elements are performed in a safe manner.</p>
+<p>The main operating mode of the interlocking is to take requests for <strong>setting a route</strong>, and then moving track elements and giving signals if this route is safe to set.  Routes are the <strong>atomic unit of allocation</strong> from the dispatcher's point of view.
 Note that the atomic unit of de-allocation is typically smaller than the route,
 a feature of interlockings which is called <em>partial release</em>.</p>
 <p>The <em>routes file</em> contains set of whitespace-separated <em>route statements</em>,
@@ -384,7 +384,8 @@ This track section is called <em>overlap</em> (british) or <em>safety zone</em> 
 Overlaps require special logic for allowing the extension of a route</p>
 <p>Overlaps are currently not supported.</p>
 <a class="header" href="print.html#flank-protection" id="flank-protection"><h2>Flank protection</h2></a>
-<a class="header" href="print.html#dispatch" id="dispatch"><h1>Dispatch</h1></a>
+<p>Flank protection can be implemented by adding requirements of exclusive allocation of resources such as detection sections and switches.</p>
+<a class="header" href="print.html#dispatch-" id="dispatch-"><h1>Dispatch 👋</h1></a>
 <p>The dispatch plan file represents a timeline of the following types of events:</p>
 <ul>
 <li>Trains entering the infrastructure from a given entry route.</li>
@@ -392,7 +393,7 @@ Overlaps require special logic for allowing the extension of a route</p>
 </ul>
 <p>The <code>train</code> and <code>route</code> statements can be seen as launching concurrent processes in the simulation.</p>
 <a class="header" href="print.html#statements" id="statements"><h2>Statements</h2></a>
-<a class="header" href="print.html#train" id="train"><h3>Train</h3></a>
+<a class="header" href="print.html#train-" id="train-"><h3>Train 🚆</h3></a>
 <p>A train starting at the current time is described by the following syntax:</p>
 <pre><code>train &lt;name&gt; l=&lt;number&gt; a=&lt;number&gt; b=&lt;number&gt; v=&lt;number&gt; &lt;route-name&gt;
 </code></pre>
@@ -417,12 +418,12 @@ Overlaps require special logic for allowing the extension of a route</p>
 </li>
 <li><strong>Finished</strong>: when the train has exited through a model boundary, it is removed from the model and considered finished.</li>
 </ol>
-<a class="header" href="print.html#route" id="route"><h3>Route</h3></a>
+<a class="header" href="print.html#route-" id="route-"><h3>Route 🛤</h3></a>
 <p>A route request dispatches at the current time is represented using the following syntax:</p>
 <pre><code>route &lt;route-name&gt;
 </code></pre>
 <p>This statement starts a route activation process. The process will wait until all resources are available before reserving the resources and starting to move any movable elements. This means that two conflicting routes may be requested, after which the first route's activation will finish, and the second route to be requested will remain waiting until all required resources are available.</p>
-<a class="header" href="print.html#wait" id="wait"><h3>Wait</h3></a>
+<a class="header" href="print.html#wait-" id="wait-"><h3>Wait ⏱</h3></a>
 <p>Passing time is represented by a separate statement:</p>
 <pre><code>wait &lt;number&gt;?
 </code></pre>
@@ -600,7 +601,7 @@ route r2 {
 }
 
 </code></pre>
-<a class="header" href="print.html#dispatch-1" id="dispatch-1"><h2>Dispatch</h2></a>
+<a class="header" href="print.html#dispatch" id="dispatch"><h2>Dispatch</h2></a>
 <pre><code class="language-haskell">train t1 l=100.0 a=0.5 b=0.5 v=10.0 ri
 route r1
 wait 110.0
@@ -624,7 +625,7 @@ route re1
 <script src="railview.js"></script>
 <a class="header" href="print.html#crossing" id="crossing"><h1>Crossing</h1></a>
 <p>Two-track station with two-way traffic. Shows example of crossing.</p>
-<a class="header" href="print.html#dispatch-2" id="dispatch-2"><h3>Dispatch</h3></a>
+<a class="header" href="print.html#dispatch-1" id="dispatch-1"><h3>Dispatch</h3></a>
 <pre><code class="language-haskell">train t1 l=175.0 a=0.8 b=0.8 v=25.0 rentrya
 route ra2
 wait 50.0
@@ -782,7 +783,7 @@ movement goodstrain {
 timing start_p end_g
 timing start_g end_p
 </code></pre>
-<a class="header" href="print.html#dispatch-3" id="dispatch-3"><h3>Dispatch</h3></a>
+<a class="header" href="print.html#dispatch-2" id="dispatch-2"><h3>Dispatch</h3></a>
 <pre><code class="language-haskell">route ra1
 route rb2
 train t1 l=850.0 a=0.5 b=0.4 v=20.0 rentrya
@@ -836,7 +837,7 @@ route rexitb2
 &lt;/railml&gt;
 </code></pre>
 <a class="header" href="print.html#generated-output" id="generated-output"><h2>Generated output</h2></a>
-<a class="header" href="print.html#infrastructure-1" id="infrastructure-1"><h3>Infrastructure</h3></a>
+<a class="header" href="print.html#infrastructure" id="infrastructure"><h3>Infrastructure</h3></a>
 <pre><code class="language-haskell">node b1-n0b
 node n1a-n1b(sight sig1 50)
 node n2a(exit sec0)-n2b(enter sec0)
@@ -946,7 +947,7 @@ modelexit r4 to b2 {
 &lt;/railml&gt;
 </code></pre>
 <a class="header" href="print.html#generated-output-1" id="generated-output-1"><h2>Generated output</h2></a>
-<a class="header" href="print.html#infrastructure-2" id="infrastructure-2"><h3>Infrastructure</h3></a>
+<a class="header" href="print.html#infrastructure-1" id="infrastructure-1"><h3>Infrastructure</h3></a>
 <pre><code class="language-haskell">node b1-n0b
 node n1a-n1b(sight sig1 50)
 node n2a(exit sec0)-n2b(enter sec0)
@@ -1299,7 +1300,7 @@ route r65x75
 route r75x
 train t1 l=150.0 a=1.0 b=0.9 v=20.0 re1
 </code></pre>
-<a class="header" href="print.html#infrastructure-3" id="infrastructure-3"><h2>Infrastructure</h2></a>
+<a class="header" href="print.html#infrastructure-2" id="infrastructure-2"><h2>Infrastructure</h2></a>
 <pre><code class="language-haskell">-- TODO sight
 --
 -- Leftmost node is free-standing distant signal Fs11001

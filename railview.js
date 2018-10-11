@@ -83,6 +83,7 @@ grid.selectAll("line.schematicline").data(lines).enter().append("line")
   .attr("cy", function(d) { return gridy(-d[1]); });
 
 var traingroup = grid.append("g").attr("id","traingroup");
+var signalbasegroup = grid.append("g").attr("id","signalbasegroup");
 var signalgroup = grid.append("g").attr("id","signalgroup");
 
 var timeslidersvg = div.append("svg").attr("id","timeline")
@@ -278,6 +279,9 @@ function set_t(t) {
   console.log(signals);
 
   var offset = 0.25;
+
+
+
   var s = signalgroup.selectAll("*").data(signals);
   s.exit().remove();
   s.enter().append("rect").merge(s)
@@ -294,6 +298,22 @@ function set_t(t) {
       .attr("rx", function(d) { if(d.green) { return 17; } else { return 0; }})
       .attr("ry", function(d) { if(d.green) { return 17; } else { return 0; }})
       .attr("class", function(d) { if(d.green) { return "greensig"; } else { return "redsig"; }});
+
+  var sb = signalbasegroup.selectAll("*").data(signals);
+  sb.enter().append("rect")
+      .attr("x", function(d) { var halfwidth=2.0; return gridx(d.pt[0]+offset*d.offset[0]+0.5*offset*d.offset[1]) - halfwidth; })
+      .attr("y", function(d) { var halfwidth=10.0; return gridy(-(d.pt[1]-offset*d.offset[1]+0.5*offset*d.offset[0])) - halfwidth; })
+      .attr("width", function(d) {return 4.0;})
+      .attr("height", function(d) {return 20.0;})
+      .attr("class", function(d) { return "signalbase"; });
+  sb.enter().append("rect")
+      .attr("x", function(d) { var halfwidth=5.0; return gridx(d.pt[0]+offset*d.offset[0]+0.25*offset*d.offset[1]) - halfwidth; })
+      .attr("y", function(d) { var halfwidth=1.0; return gridy(-(d.pt[1]-offset*d.offset[1]+0.25*offset*d.offset[0])) - halfwidth; })
+      .attr("width", function(d) {return 10.0;})
+      .attr("height", function(d) {return 2.0;})
+      .attr("class", function(d) { return "signalbase"; });
+
+
 
   for (var train in data.trains) {
       var d = data.trains[train].events;

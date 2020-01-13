@@ -183,9 +183,12 @@ that the train should not move from its position after arriving at the node.
 <a class="header" href="usage.html#timing" id="timing"><h2>Timing</h2></a>
 <p>A timing statement declares an ordering of named visits, as defined in the movements.
 The visits may refer to named visits in two different trains.
-The timing statement has an optional time parameter which may be used to set an upper bound
+The timing statement has an optional numerical parameter which may be used to set an upper bound
 on the time passing from the first to the second visit.</p>
-<pre><code>timing &lt;visit-name&gt; &lt;visit-name&gt; [&lt;number&gt;]
+<pre><code>timing &lt;visit-name&gt; "&lt;"[&lt;number&gt;] &lt;visit-name&gt; 
+</code></pre>
+Alternative syntax:
+<pre><code>timing &lt;visit-name&gt; &lt;visit-name&gt; [["within"] &lt;number&gt;]
 </code></pre>
 <p>Example</p>
 <pre><code class="language-haskell">timing start_p1 start_p2
